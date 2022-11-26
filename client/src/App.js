@@ -8,7 +8,7 @@ import UserDetail from '../src/components/Users/UserDetail';
 function App() {
   const [userCount, setUserCount] = useState()
   const [totalUser, setTotalUser] = useState()
-  const [users, setUsers] = useState()
+  const [, setUsers] = useState()
 
   // get users count per page, total count and pass them to User component
   useEffect(() => {
