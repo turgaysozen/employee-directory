@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css';
-import Users from './Users/Users';
-import { getUsers } from '../src/Users/getUsers';
-import UserDetail from './Users/UserDetail';
-import { useParams } from "react-router-dom"
+import Users from '../src/components/Users/Users';
+import { getUsers } from '../src/components/Users/getUsers';
+import UserDetail from '../src/components/Users/UserDetail';
 
 function App() {
   const [userCount, setUserCount] = useState()
