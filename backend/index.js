@@ -25,7 +25,6 @@ app.use('/api', routes)
 
 const PORT = process.env.BACKEND_PORT
 
-
 app.listen(PORT, () => {
     console.log(`Server Started at ${PORT}`)
 })
