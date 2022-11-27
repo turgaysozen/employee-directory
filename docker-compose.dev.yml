@@ -10,6 +10,8 @@ services:
       context: ./nginx
     ports:
       - "3050:80"
+  redis:
+    image: redis
   api:
     build:
       dockerfile: Dockerfile.dev
@@ -19,6 +21,12 @@ services:
       - ./api:/app
     ports: 
       - "3001:3001"
+    depends_on:
+      - redis
+    links:
+      - redis
+    environment:
+      REDIS_PORT: 6379
   client:
     stdin_open: true
     build:
