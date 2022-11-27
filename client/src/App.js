@@ -13,7 +13,8 @@ function App() {
   // get users count per page, total count and pass them to User component
   useEffect(() => {
     (async () => {
-      const users = await getUsers()
+      const defaultPage = 1
+      const users = await getUsers(defaultPage)
       setUserCount(users.per_page)
       setTotalUser(users.total)
       setUsers(users.data)
