@@ -1,16 +1,16 @@
 const redis = require('redis')
+const logger = require('./logger')
 
 async function initRedisClient() {
     try {
         const redisPort = process.env.REDIS_PORT
         const client = redis.createClient({ url: `redis://redis:${redisPort}` });
-        client.on("connect", () => console.log(`connected to redis`));
-        client.on("error", (err) => console.log("Redis Client Connection Error"));
+        client.on("connect", () => logger.info(`connected to redis`));
+        client.on("error", (err) => logger.error("redis client connection error"));
         await client.connect();
-        console.log("Redis cashe app database connected...");
         return client;
     } catch (error) {
-        console.log('Redis app connection Error...', error);
+        logger.error('redis app connection error...', error);
     }
 }
 

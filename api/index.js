@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan')
 const cors = require('cors')
-
+const logger = require('./logger')
 const helmet = require('helmet')
 const routes = require('./routes/routes')
 
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 app.use('/api', routes)
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server Started at ${process.env.PORT}`)
+    logger.info(`Server Started at ${process.env.PORT}`)
 })
 
 module.exports = app

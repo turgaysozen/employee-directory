@@ -1,4 +1,5 @@
 const initRedisClient = require('../redis')
+const logger = require('../logger')
 
 const getUser = async (req, res) => {
     const { page } = req.query
@@ -6,6 +7,7 @@ const getUser = async (req, res) => {
     const users = await response.json()
     const key = `page_${page}`
     await (await initRedisClient).setEx(key, process.env.TTL, JSON.stringify(users))
+    logger.info(`users data are stored to the cache for page: ${page}`)
     res.send(users)
 }
 
