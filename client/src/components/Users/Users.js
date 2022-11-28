@@ -9,6 +9,7 @@ export default function Users({ userCount, totalUserCount }) {
     const [isNextPage, setIsNextPage] = useState(false)
     const [initialPage, setInitialPage] = useState(1)
     const [pageNumber, setPageNumber] = useState(1)
+    const [query, setQuery] = useState("")
     const pageNumbers = [];
 
     // find total required pages
@@ -40,7 +41,8 @@ export default function Users({ userCount, totalUserCount }) {
     return (
         <>
             <div style={{marginTop: '100px'}}>
-                <h3>Users</h3>
+                <h3>Users</h3><br></br>
+                <input style={{marginBottom: "5px", width: "40%"}} placeholder='Search User' onChange={(e) => setQuery(e.target.value)}/>
                 <div>
                     <table>
                         <thead>
@@ -53,7 +55,7 @@ export default function Users({ userCount, totalUserCount }) {
                             </tr>
                         </thead>
                         {
-                            users.map(user => {
+                            users.filter(user => user.email.includes(query.trim())).map(user => {
                                 return (
                                     <tbody key={user.id}>
                                         <tr>
