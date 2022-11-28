@@ -1,6 +1,7 @@
 const redis = require('redis')
 const logger = require('./logger')
 
+// create redis client
 async function initRedisClient() {
     try {
         const redisPort = process.env.REDIS_PORT

@@ -1,6 +1,7 @@
 const initRedisClient = require('./redis')
 const logger = require('./logger')
 
+// cache middleware - read users from the cache for 30 mins.
 async function cache(req, res, next) {
     const { page } = req.query
     const users = await (await initRedisClient).get(`page_${page}`)

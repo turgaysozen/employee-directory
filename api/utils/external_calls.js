@@ -1,6 +1,7 @@
 const initRedisClient = require('../redis')
 const logger = require('../logger')
 
+// fetch users from the source and cache it
 const getUser = async (req, res) => {
     const { page } = req.query
     const response = await fetch(`${process.env.REGRES_URL}/api/users?page=${page}`)
